@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسئلة الشائعة | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 24px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            color: var(--brand-yellow);
+        }
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 24px 24px;
+            max-height: 500px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn"><i class="fa-solid fa-search"></i></button>
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">الأسئلة الشائعة</h1>
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <span>/</span> الأسئلة الشائعة
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="section-padding">
+        <div class="container faq-container">
+            <h2 style="text-align: center; margin-bottom: 48px; color: var(--primary);">كيف يمكننا مساعدتك؟</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    هل يتوفر التوصيل في جميع المحافظات اليمنية؟
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    في الوقت الحالي، خدمات التوصيل لدينا تغطي مدينة الحديدة وبعض المحافظات الرئيسية. نعمل باستمرار على توسيع نطاق خدماتنا لتشمل جميع مناطق اليمن قريباً.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ما هي طرق الدفع المتاحة؟
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    نوفر خيارات دفع متعددة لراحتكم، منها الدفع نقداً عند الاستلام، والدفع عبر تطبيقات المحافظ الإلكترونية المتوفرة في اليمن مثل (جوالي، فلوسك، موبايل موني)، بالإضافة إلى التحويلات البنكية.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    هل المشروبات تصل باردة؟
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    نعم بالتأكيد! نحن نستخدم سيارات مبردة وحافظات حرارية متخصصة لضمان وصول جميع المشروبات الغازية والعصائر إليكم باردة ومنعشة كما تحبونها.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    كم يستغرق توصيل الطلب؟
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    داخل مدينة الحديدة يتم توصيل الطلب خلال ساعتين إلى 4 ساعات كحد أقصى من وقت تأكيد الطلب. أما للمحافظات الأخرى فقد يستغرق الطلب من 24 إلى 48 ساعة حسب المنطقة.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    هل يوجد حد أدنى للطلب؟
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    لا يوجد حد أدنى للطلب للاستلام من فروعنا. ولكن بالنسبة لخدمة التوصيل المنزلي، يجب أن يكون إجمالي الطلب 5000 ريال يمني أو أكثر.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

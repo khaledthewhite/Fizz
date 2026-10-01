@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html" class="active">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn"><i class="fa-solid fa-search"></i></button>
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">منتجاتنا</h1>
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <span>/</span> منتجاتنا
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Page Layout -->
+    <div class="container page-layout">
+        <aside class="sidebar">
+            <div class="filter-box">
+                <h3 class="filter-title">التصنيفات</h3>
+                <ul class="filter-list">
+                    <li><label><input type="radio" name="category" value="all" checked> جميع المشروبات</label></li>
+                    <li><label><input type="radio" name="category" value="cola"> كولا</label></li>
+                    <li><label><input type="radio" name="category" value="orange"> برتقال</label></li>
+                    <li><label><input type="radio" name="category" value="lemon"> ليمون</label></li>
+                </ul>
+            </div>
+            <div class="filter-box">
+                <h3 class="filter-title">السعر</h3>
+                <ul class="filter-list">
+                    <li><label><input type="radio" name="price" value="all" checked> الكل</label></li>
+                    <li><label><input type="radio" name="price" value="under5"> أقل من $5</label></li>
+                    <li><label><input type="radio" name="price" value="5to10"> $5 - $10</label></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="product-grid" id="all-products">
+                <!-- Products will be injected here via JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Simple filtering logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryRadios = document.querySelectorAll('input[name="category"]');
+            const priceRadios = document.querySelectorAll('input[name="price"]');
+            const allProductsContainer = document.getElementById('all-products');
+
+            function applyFilters() {
+                const selectedCat = document.querySelector('input[name="category"]:checked').value;
+                const selectedPrice = document.querySelector('input[name="price"]:checked').value;
+
+                let filtered = products;
+
+                if(selectedCat !== 'all') {
+                    filtered = filtered.filter(p => p.category === selectedCat);
+                }
+
+                if(selectedPrice === 'under5') {
+                    filtered = filtered.filter(p => p.price < 5);
+                } else if(selectedPrice === '5to10') {
+                    filtered = filtered.filter(p => p.price >= 5 && p.price <= 10);
+                }
+
+                renderProducts(filtered, allProductsContainer);
+            }
+
+            categoryRadios.forEach(r => r.addEventListener('change', applyFilters));
+            priceRadios.forEach(r => r.addEventListener('change', applyFilters));
+            
+            // Check URL param for initial category filter
+            const urlCat = getUrlParam('category');
+            if(urlCat) {
+                const radio = document.querySelector(`input[name="category"][value="${urlCat}"]`);
+                if(radio) {
+                    radio.checked = true;
+                    applyFilters();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

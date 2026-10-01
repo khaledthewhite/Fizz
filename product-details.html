@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header" style="padding: 24px 0;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <span>/</span> <a href="products.html">منتجاتنا</a> <span>/</span> <span id="bc-name">جاري التحميل...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <div class="container product-details-container">
+        <div class="product-gallery">
+            <img src="" id="detail-image" alt="">
+        </div>
+        
+        <div class="product-info">
+            <h1 class="product-title" id="detail-title">جاري التحميل...</h1>
+            <div class="product-rating" style="font-size: 1.1rem; margin-bottom: 24px;">
+                <i class="fa-solid fa-star"></i>
+                <span id="detail-rating">--</span>
+                <span class="count" id="detail-reviews" style="color: var(--text-secondary);">(0 تقييم)</span>
+            </div>
+            
+            <div class="product-price-row" id="detail-price-row">
+                <!-- Price injected here -->
+            </div>
+            
+            <p class="product-description" id="detail-desc">
+                جاري التحميل...
+            </p>
+            
+            <div class="options-group">
+                <h4>الحجم</h4>
+                <div class="size-options">
+                    <div class="size-option">صغير</div>
+                    <div class="size-option active">متوسط</div>
+                    <div class="size-option">كبير</div>
+                </div>
+            </div>
+            
+            <div class="add-to-cart-section">
+                <div class="quantity-control" style="border: 1px solid var(--border); background-color: var(--white);">
+                    <button class="qty-btn" id="qty-plus">+</button>
+                    <span id="qty-val">1</span>
+                    <button class="qty-btn" id="qty-minus">-</button>
+                </div>
+                <button class="btn btn-primary" id="add-btn"><i class="fa-solid fa-cart-plus"></i> أضف إلى السلة</button>
+                <a href="checkout.html" class="btn btn-dark">اشترِ الآن</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productId = parseInt(getUrlParam('id')) || 1; // default 1
+            const product = products.find(p => p.id === productId);
+            
+            if(product) {
+                document.getElementById('bc-name').textContent = product.name;
+                document.getElementById('detail-title').textContent = product.name;
+                document.getElementById('detail-desc').textContent = product.description;
+                document.getElementById('detail-rating').textContent = product.rating;
+                document.getElementById('detail-reviews').textContent = `(${product.reviewsCount} تقييم)`;
+                document.getElementById('detail-image').src = product.image;
+                
+                let priceHtml = `<div class="current-price">$${product.price.toFixed(2)}</div>`;
+                if(product.discount > 0) {
+                    priceHtml = `
+                        <div class="current-price">$${product.price.toFixed(2)}</div>
+                        <div class="old-price">$${product.oldPrice.toFixed(2)}</div>
+                        <div class="discount-badge" style="position: static; margin-right: 16px;">خصم ${product.discount}%</div>
+                    `;
+                }
+                document.getElementById('detail-price-row').innerHTML = priceHtml;
+                
+                let qty = 1;
+                document.getElementById('qty-plus').onclick = () => { qty++; document.getElementById('qty-val').textContent = qty; };
+                document.getElementById('qty-minus').onclick = () => { if(qty > 1) qty--; document.getElementById('qty-val').textContent = qty; };
+                
+                document.getElementById('add-btn').onclick = () => {
+                    addToCart(product.id, qty);
+                };
+            }
+        });
+    </script>
+</body>
+</html>

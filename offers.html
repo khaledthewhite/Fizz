@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العروض | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html" class="active">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn"><i class="fa-solid fa-search"></i></button>
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Offers Banner -->
+    <section class="hero" style="background: var(--dark); padding: 64px 0; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3rem; color: var(--brand-yellow); margin-bottom: 16px;">عروض لا تفوت!</h1>
+            <p style="color: var(--white); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">اكتشف أفضل الخصومات على مشروباتك المفضلة لفترة محدودة. انتعش أكثر ووفّر أكثر مع فيز.</p>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="products section-padding" style="background-color: var(--off-white); min-height: 50vh;">
+        <div class="container">
+            <div class="product-grid" id="offers-products">
+                <!-- Injected via main.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة المشتريات | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-page-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            padding: 48px 0;
+        }
+        .cart-table-wrapper {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            padding: 24px;
+        }
+        .cart-summary {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            padding: 24px;
+            height: max-content;
+        }
+        .cart-page-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cart-page-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .item-image {
+            width: 100px;
+            height: 100px;
+            background-color: var(--off-white);
+            border-radius: var(--border-radius-sm);
+            padding: 12px;
+        }
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .item-details {
+            flex: 1;
+        }
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .item-price {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .item-total {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .cart-page-container {
+                grid-template-columns: 1fr;
+            }
+            .cart-page-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Cart -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header" style="padding: 24px 0;">
+        <div class="container">
+            <h1 class="page-title">سلة المشتريات</h1>
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <span>/</span> سلة المشتريات
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Page Content -->
+    <div class="container">
+        <div class="cart-page-container" id="cart-page-content">
+            <!-- Will be rendered by JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFullCart();
+        });
+
+        function renderFullCart() {
+            const container = document.getElementById('cart-page-content');
+            if (!container) return;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 64px 24px;">
+                        <i class="fa-solid fa-cart-shopping" style="font-size: 4rem; color: var(--border); margin-bottom: 24px;"></i>
+                        <h2 style="margin-bottom: 16px;">سلة المشتريات فارغة</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 32px;">لم تقم بإضافة أي منتجات للسلة بعد.</p>
+                        <a href="products.html" class="btn btn-primary">تصفح المنتجات</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const itemsHtml = cart.map(item => `
+                <div class="cart-page-item">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-title">${item.name}</h3>
+                        <div class="item-price">السعر: $${item.price.toFixed(2)}</div>
+                        <button class="cart-item-remove" onclick="removeAndRender(${item.id})" style="border:none; background:none; color:#E63946; text-decoration:underline; cursor:pointer;">إزالة</button>
+                    </div>
+                    <div class="quantity-control" style="border: 1px solid var(--border);">
+                        <button class="qty-btn" onclick="updateAndRender(${item.id}, 1)">+</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateAndRender(${item.id}, -1)">-</button>
+                    </div>
+                    <div class="item-total">
+                        $${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                </div>
+            `).join('');
+
+            const subtotal = getCartTotal();
+            const tax = subtotal * 0.15; // 15% tax
+            const total = subtotal + tax;
+
+            container.innerHTML = `
+                <div class="cart-table-wrapper">
+                    ${itemsHtml}
+                </div>
+                <div class="cart-summary">
+                    <h3 style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">ملخص الطلب</h3>
+                    <div class="order-summary">
+                        <div class="summary-item">
+                            <span>المجموع الفرعي:</span>
+                            <span>$${subtotal.toFixed(2)}</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>الضريبة (15%):</span>
+                            <span>$${tax.toFixed(2)}</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>رسوم التوصيل:</span>
+                            <span>مجاناً</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>الإجمالي:</span>
+                            <span>$${total.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <a href="checkout.html" class="btn btn-primary w-100" style="width: 100%; margin-top: 24px;">متابعة الدفع</a>
+                </div>
+            `;
+        }
+
+        function updateAndRender(id, delta) {
+            updateQuantity(id, delta);
+            renderFullCart();
+        }
+        function removeAndRender(id) {
+            removeFromCart(id);
+            renderFullCart();
+        }
+    </script>
+</body>
+</html>

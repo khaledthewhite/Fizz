@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="padding: 24px 0;">
+        <div class="container">
+            <h1 class="page-title">إتمام الطلب</h1>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <div class="container checkout-grid">
+        <form class="checkout-form" id="checkout-form">
+            <div class="checkout-box">
+                <h3>معلومات العميل</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" class="form-control" required placeholder="أدخل اسمك الكامل">
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" class="form-control" required placeholder="05x xxx xxxx">
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-box">
+                <h3>طريقة الاستلام</h3>
+                <div class="radio-group">
+                    <label class="radio-card">
+                        <input type="radio" name="deliveryMethod" value="delivery" checked>
+                        <span>توصيل للمنزل</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="deliveryMethod" value="pickup">
+                        <span>استلام من المتجر</span>
+                    </label>
+                </div>
+                
+                <div id="address-fields">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>المدينة</label>
+                            <input type="text" class="form-control" required placeholder="مثال: الرياض">
+                        </div>
+                        <div class="form-group">
+                            <label>المنطقة / الحي</label>
+                            <input type="text" class="form-control" required placeholder="مثال: الياسمين">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان بالتفصيل</label>
+                        <input type="text" class="form-control" required placeholder="اسم الشارع، رقم المبنى">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 16px;">
+                    <label>ملاحظات الطلب (اختياري)</label>
+                    <textarea class="form-control" rows="3" placeholder="أي ملاحظات إضافية للتوصيل..."></textarea>
+                </div>
+            </div>
+
+            <div class="checkout-box">
+                <h3>طريقة الدفع</h3>
+                <div class="radio-group" style="flex-direction: column;">
+                    <label class="radio-card">
+                        <input type="radio" name="paymentMethod" value="card" checked>
+                        <span><i class="fa-regular fa-credit-card"></i> بطاقة ائتمانية / مدى</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="paymentMethod" value="cod">
+                        <span><i class="fa-solid fa-money-bill-wave"></i> الدفع عند الاستلام</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px; font-size: 1.1rem;">تأكيد الطلب</button>
+            </div>
+        </form>
+
+        <div class="checkout-summary">
+            <div class="checkout-box" style="position: sticky; top: 100px;">
+                <h3>ملخص الطلب</h3>
+                <div id="checkout-items" style="margin-bottom: 24px;"></div>
+                
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <span>المجموع الفرعي:</span>
+                        <span id="co-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>الضريبة (15%):</span>
+                        <span id="co-tax">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>التوصيل:</span>
+                        <span>مجاناً</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>الإجمالي النهائي:</span>
+                        <span id="co-total">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (cart.length === 0) {
+                window.location.href = 'products.html';
+                return;
+            }
+
+            renderCheckoutSummary();
+
+            const deliveryRadios = document.querySelectorAll('input[name="deliveryMethod"]');
+            const addressFields = document.getElementById('address-fields');
+            
+            deliveryRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if(e.target.value === 'pickup') {
+                        addressFields.style.display = 'none';
+                        const inputs = addressFields.querySelectorAll('input');
+                        inputs.forEach(i => i.removeAttribute('required'));
+                    } else {
+                        addressFields.style.display = 'block';
+                        const inputs = addressFields.querySelectorAll('input');
+                        inputs.forEach(i => i.setAttribute('required', 'true'));
+                    }
+                });
+            });
+
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('تم استلام طلبك بنجاح! شكراً لتسوقك من فيز للمشروبات.');
+                localStorage.removeItem('veez_cart');
+                window.location.href = 'index.html';
+            });
+        });
+
+        function renderCheckoutSummary() {
+            const container = document.getElementById('checkout-items');
+            container.innerHTML = cart.map(item => `
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px; align-items:center;">
+                    <div style="display:flex; gap:12px; align-items:center;">
+                        <img src="${item.image}" alt="${item.name}" style="width:40px; height:40px; object-fit:contain; background:var(--off-white); border-radius:4px; padding:4px;">
+                        <div>
+                            <div style="font-weight:700; font-size:0.9rem;">${item.name}</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">الكمية: ${item.quantity}</div>
+                        </div>
+                    </div>
+                    <div style="font-weight:700;">$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+
+            const subtotal = getCartTotal();
+            const tax = subtotal * 0.15;
+            const total = subtotal + tax;
+
+            document.getElementById('co-subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('co-tax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('co-total').textContent = '$' + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

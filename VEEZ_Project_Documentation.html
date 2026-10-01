@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>توثيق مشروع فيز للمشروبات | VEEZ Drinks Store Documentation</title>
+<style>
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+:root {
+  --primary: #111315;
+  --dark: #080A0C;
+  --yellow: #FFD21A;
+  --yellow-light: #FFF8D6;
+  --white: #FFFFFF;
+  --off-white: #F8F9FA;
+  --light-gray: #F1F2F3;
+  --border: #E5E7EB;
+  --text-dark: #111111;
+  --text-secondary: #555555;
+  --code-bg: #1E1E2E;
+  --code-text: #CDD6F4;
+  --green: #2ECC71;
+  --red: #E74C3C;
+  --blue: #3498DB;
+  --orange: #F39C12;
+  --sidebar-width: 280px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Cairo', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.7; direction: rtl; }
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+.page-wrapper { display: flex; min-height: 100vh; }
+.sidebar { width: var(--sidebar-width); background: var(--primary); color: var(--white); position: fixed; top: 0; right: 0; height: 100vh; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+.main-content { margin-right: var(--sidebar-width); flex: 1; min-width: 0; }
+.sidebar-header { background: var(--dark); padding: 24px 20px; border-bottom: 2px solid var(--yellow); text-align: center; }
+.sidebar-logo { font-size: 1.6rem; font-weight: 900; color: var(--yellow); margin-bottom: 4px; }
+.sidebar-subtitle { font-size: 0.75rem; color: #aaa; }
+.sidebar-nav { padding: 16px 0; }
+.sidebar-nav a { display: block; padding: 10px 20px; font-size: 0.85rem; color: #ccc; border-right: 3px solid transparent; transition: all 0.2s; }
+.sidebar-nav a:hover { background: rgba(255,210,26,0.1); color: var(--yellow); border-right-color: var(--yellow); }
+.sidebar-nav .nav-section { padding: 8px 20px 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
+.cover-page { background: linear-gradient(135deg, var(--primary) 0%, #1a1d20 50%, var(--dark) 100%); color: var(--white); padding: 80px 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.cover-page::before { content:''; position:absolute; top:-200px; left:-200px; width:600px; height:600px; background: radial-gradient(circle, rgba(255,210,26,0.08) 0%, transparent 70%); pointer-events:none; }
+.cover-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,210,26,0.15); border: 1px solid rgba(255,210,26,0.4); color: var(--yellow); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 32px; width: fit-content; }
+.cover-title { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 12px; }
+.cover-title span { color: var(--yellow); }
+.cover-subtitle { font-size: 1.5rem; color: #aaa; margin-bottom: 48px; }
+.cover-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+.cover-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; }
+.cover-card-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.cover-card-value { font-size: 1rem; font-weight: 700; color: var(--white); }
+.cover-stats { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); }
+.cover-stat-num { font-size: 2rem; font-weight: 900; color: var(--yellow); }
+.cover-stat-label { font-size: 0.85rem; color: #888; }
+.print-btn { position: fixed; bottom: 32px; left: 32px; background: var(--yellow); color: var(--primary); border: none; padding: 14px 24px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 1rem; cursor: pointer; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: all 0.2s; }
+.print-btn:hover { transform: translateY(-2px); }
+.doc-section { background: var(--white); margin: 0; padding: 60px; border-bottom: 8px solid var(--off-white); }
+.section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid var(--border); }
+.section-num { background: var(--primary); color: var(--yellow); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900; flex-shrink: 0; }
+.section-title-text { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+.section-title-text span { color: var(--yellow); }
+.code-block { background: var(--code-bg); color: var(--code-text); font-family: 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.6; padding: 24px; border-radius: 10px; overflow-x: auto; margin: 20px 0; direction: ltr; text-align: left; white-space: pre; border: 1px solid rgba(255,255,255,0.05); break-inside: avoid; }
+.code-label { background: rgba(255,210,26,0.15); color: var(--yellow); font-family: 'Fira Code', monospace; font-size: 0.8rem; padding: 6px 16px; border-radius: 6px 6px 0 0; display: inline-block; margin-bottom: -1px; border: 1px solid rgba(255,210,26,0.3); border-bottom: none; }
+.doc-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; break-inside: avoid; }
+.doc-table th { background: var(--primary); color: var(--yellow); padding: 12px 16px; text-align: right; font-weight: 700; }
+.doc-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.doc-table tr:hover td { background: var(--off-white); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 24px 0; }
+.info-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; padding: 20px; break-inside: avoid; }
+.info-card-title { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.info-card-title .icon { background: var(--yellow); color: var(--primary); width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+.badge-yellow { background: var(--yellow-light); color: #856000; border: 1px solid #dfc74a; }
+.badge-dark { background: var(--primary); color: var(--white); }
+.badge-green { background: #d5f5e3; color: #1a7a45; border: 1px solid #82e0aa; }
+.badge-red { background: #fde8e8; color: #c0392b; border: 1px solid #f1948a; }
+.badge-blue { background: #d6eaf8; color: #1a5276; border: 1px solid #7fb3d3; }
+.file-tree { background: var(--code-bg); color: var(--code-text); font-family: 'Fira Code', monospace; font-size: 0.9rem; padding: 28px; border-radius: 10px; direction: ltr; line-height: 2; }
+.file-tree .dir { color: #89dceb; }
+.file-tree .file-html { color: #f38ba8; }
+.file-tree .file-css { color: #89b4fa; }
+.file-tree .file-js { color: #f9e2af; }
+.file-tree .file-img { color: #a6e3a1; }
+.qa-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; overflow: hidden; break-inside: avoid; }
+.qa-question { background: var(--primary); color: var(--yellow); padding: 16px 20px; font-weight: 700; font-size: 0.95rem; }
+.qa-answer { background: var(--white); padding: 16px 20px; color: var(--text-dark); font-size: 0.92rem; border-top: 2px solid var(--yellow); }
+.flow-steps { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+.flow-step { display: flex; align-items: center; gap: 20px; padding: 16px 20px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 4px; }
+.flow-num { background: var(--yellow); color: var(--primary); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+.flow-arrow { text-align: center; color: #aaa; font-size: 1.2rem; margin: 2px 0 2px 56px; }
+.alert { padding: 16px 20px; border-radius: 8px; margin: 16px 0; font-size: 0.92rem; border-right: 4px solid; }
+.alert-warning { background: #fff8e5; border-color: var(--orange); color: #7d4e00; }
+.alert-info { background: #e8f4fd; border-color: var(--blue); color: #1a5276; }
+.alert-success { background: #e9f7ef; border-color: var(--green); color: #1a7a45; }
+.alert-danger { background: #fde8e8; border-color: var(--red); color: #c0392b; }
+code { background: #f0f0f0; color: #c0392b; padding: 2px 6px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.85em; }
+.doc-h2 { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 32px 0 16px; border-right: 4px solid var(--yellow); padding-right: 12px; }
+.doc-h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 24px 0 12px; }
+.doc-p { margin-bottom: 12px; line-height: 1.8; color: var(--text-secondary); }
+.doc-p strong { color: var(--text-dark); }
+.line-explain { margin: 12px 0; }
+.line-explain .line-code { display: block; background: var(--code-bg); color: var(--yellow); font-family: 'Fira Code', monospace; font-size: 0.82rem; padding: 10px 16px; border-radius: 6px 6px 0 0; direction: ltr; text-align: left; }
+.line-explain .line-desc { display: block; background: var(--off-white); border: 1px solid var(--border); border-top: none; padding: 10px 16px; border-radius: 0 0 6px 6px; font-size: 0.88rem; color: var(--text-secondary); }
+@media print {
+  .sidebar, .print-btn { display: none !important; }
+  .main-content { margin-right: 0 !important; }
+  body { background: white; font-size: 11pt; }
+  .cover-page { min-height: auto; padding: 40px; background: white; color: black; }
+  .cover-title, .cover-subtitle, .cover-card-value, .cover-badge, .cover-stat-label { color: black !important; }
+  .cover-title span { color: #aa8800 !important; }
+  .cover-card { border: 1px solid #ccc; background: #f5f5f5; }
+  .cover-page::before { display: none; }
+  .doc-section { padding: 30px 40px; border-bottom: 2px solid #ddd; }
+  .code-block { font-size: 8pt; background: #111; color: #eee; break-inside: avoid; }
+  .doc-table { break-inside: auto; }
+  .doc-table tr { break-inside: avoid; }
+  .section-header, .doc-h2, h1, h2, h3, h4 { break-after: avoid; }
+  .cover-grid { grid-template-columns: repeat(3, 1fr); }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .qa-item { break-inside: avoid; }
+  @page { margin: 2cm; }
+}
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main-content { margin-right: 0; }
+  .doc-section { padding: 32px 24px; }
+  .cover-page { padding: 40px 24px; }
+  .cover-grid { grid-template-columns: 1fr; }
+  .cover-stats { flex-wrap: wrap; gap: 20px; }
+  .print-btn { bottom: 16px; left: 16px; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+
+<div class="page-wrapper">
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">⚡ فيز</div>
+    <div class="sidebar-subtitle">Project Documentation</div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">نظرة عامة</div>
+    <a href="#cover">📄 صفحة الغلاف</a>
+    <a href="#overview">📋 فكرة المشروع</a>
+    <a href="#filetree">📁 هيكل الملفات</a>
+    <a href="#sitemap">🗺️ خريطة الموقع</a>
+
+    <div class="nav-section">ملفات HTML</div>
+    <a href="#html-tags">جدول HTML Tags</a>
+
+    <div class="nav-section">CSS</div>
+    <a href="#css-overview">نظرة عامة style.css</a>
+    <a href="#css-selectors">Selectors</a>
+    <a href="#css-properties">CSS Properties</a>
+    <a href="#css-responsive">Responsive Design</a>
+
+    <div class="nav-section">JavaScript</div>
+    <a href="#js-data">data.js</a>
+    <a href="#js-main">main.js</a>
+    <a href="#js-functions">جدول Functions</a>
+    <a href="#js-events">Events</a>
+    <a href="#js-dom">DOM Manipulation</a>
+
+    <div class="nav-section">الأنظمة</div>
+    <a href="#localstorage">LocalStorage</a>
+    <a href="#cart-system">نظام السلة</a>
+    <a href="#filter-system">الفلاتر والتصنيفات</a>
+    <a href="#checkout-system">نظام الدفع</a>
+    <a href="#relationship">علاقة HTML/CSS/JS</a>
+
+    <div class="nav-section">للمناقشة</div>
+    <a href="#important-code">أهم الأكواد</a>
+    <a href="#qa">أسئلة المناقشة</a>
+    <a href="#notes">ملاحظات تقنية</a>
+    <a href="#stats">الإحصائيات</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+<!-- COVER PAGE -->
+<div class="cover-page" id="cover">
+  <div class="cover-badge">🎓 توثيق أكاديمي | Academic Documentation</div>
+  <div class="cover-title">مشروع متجر<br><span>فيز للمشروبات</span></div>
+  <div class="cover-subtitle">VEEZ Drinks Store — Full Project Documentation</div>
+  <div class="cover-grid">
+    <div class="cover-card"><div class="cover-card-label">نوع المشروع</div><div class="cover-card-value">متجر إلكتروني للمشروبات</div></div>
+    <div class="cover-card"><div class="cover-card-label">التقنيات المستخدمة</div><div class="cover-card-value">HTML5 · CSS3 · JavaScript ES6</div></div>
+    <div class="cover-card"><div class="cover-card-label">المكتبات الخارجية</div><div class="cover-card-value">Font Awesome 6.4 · Cairo Font</div></div>
+    <div class="cover-card"><div class="cover-card-label">الموقع الجغرافي</div><div class="cover-card-value">الحديدة، اليمن</div></div>
+    <div class="cover-card"><div class="cover-card-label">تخزين البيانات</div><div class="cover-card-value">localStorage (Client-Side)</div></div>
+    <div class="cover-card"><div class="cover-card-label">لا يوجد</div><div class="cover-card-value">Backend — Database — Framework</div></div>
+  </div>
+  <div class="cover-stats">
+    <div><div class="cover-stat-num">9</div><div class="cover-stat-label">صفحات HTML</div></div>
+    <div><div class="cover-stat-num">1</div><div class="cover-stat-label">ملف CSS</div></div>
+    <div><div class="cover-stat-num">2</div><div class="cover-stat-label">ملفات JavaScript</div></div>
+    <div><div class="cover-stat-num">6</div><div class="cover-stat-label">منتجات</div></div>
+    <div><div class="cover-stat-num">987</div><div class="cover-stat-label">سطر CSS</div></div>
+    <div><div class="cover-stat-num">213</div><div class="cover-stat-label">سطر JS (main.js)</div></div>
+    <div><div class="cover-stat-num">4</div><div class="cover-stat-label">صور منتجات</div></div>
+  </div>
+</div>
+
+<!-- ========================== -->
+<!-- SECTION 1: PROJECT OVERVIEW -->
+<!-- ========================== -->
+<section class="doc-section" id="overview">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">فكرة <span>المشروع</span></div>
+  </div>
+  <div class="doc-h2">ما هو متجر فيز؟</div>
+  <p class="doc-p">«فيز للمشروبات» هو <strong>متجر إلكتروني</strong> (E-Commerce Store) متخصص في بيع المشروبات الغازية عبر الإنترنت. المشروع مبني باستخدام تقنيات الويب الأساسية فقط (HTML + CSS + JavaScript) دون أي إطار عمل (Framework) أو خادم خلفي (Backend Server). يعتمد على <strong>localStorage</strong> لتخزين بيانات السلة على جهاز المتصفح مباشرةً.</p>
+  <div class="doc-h2">المشكلة التي يحلها المشروع</div>
+  <p class="doc-p">يوفر المشروع واجهة تسوق رقمية تمكن المستخدمين من تصفح تشكيلة واسعة من المشروبات، إضافتها إلى السلة، وإتمام عملية الطلب بخطوات واضحة دون الحاجة للتوجه إلى المتجر الفعلي.</p>
+  <div class="doc-h2">رحلة المستخدم (User Journey)</div>
+  <div class="flow-steps">
+    <div class="flow-step"><div class="flow-num">1</div><div><strong>دخول الصفحة الرئيسية</strong> — يرى المستخدم قسم Hero والمنتجات المميزة والتصنيفات</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">2</div><div><strong>استعراض التصنيفات</strong> — يضغط على تصنيف أو "جميع المشروبات"</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">3</div><div><strong>صفحة المنتجات</strong> — يستعرض المنتجات مع إمكانية الفلترة حسب الصنف والسعر</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">4</div><div><strong>تفاصيل المنتج</strong> — يضغط على منتج لرؤية تفاصيله كاملة</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">5</div><div><strong>إضافة للسلة</strong> — يضغط "أضف إلى السلة" فيظهر Sidebar السلة</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">6</div><div><strong>مراجعة السلة</strong> — يدخل cart.html لمراجعة الكميات وحساب الإجمالي مع ضريبة 15%</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">7</div><div><strong>إتمام الطلب</strong> — يدخل checkout.html ويملأ البيانات</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">8</div><div><strong>تأكيد الطلب</strong> — يضغط "تأكيد الطلب" فتظهر رسالة نجاح ويُمسح المخزن المحلي</div></div>
+  </div>
+  <div class="alert alert-info" style="margin-top:24px;"><strong>⚠️ ملاحظة مهمة:</strong> المشروع لا يحتوي على Backend أو قاعدة بيانات. الطلب لا يُرسل لأي خادم حقيقي. عند تأكيد الطلب يظهر فقط <code>alert()</code> ثم يُحذف محتوى السلة.</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 2: FILE TREE -->
+<!-- ========================== -->
+<section class="doc-section" id="filetree">
+  <div class="section-header"><div class="section-num">2</div><div class="section-title-text">هيكل <span>الملفات</span></div></div>
+  <div class="file-tree">
+<span class="dir">فيز/  (المجلد الرئيسي للمشروع)</span>
+│
+├── <span class="file-html">index.html</span>          — الصفحة الرئيسية
+├── <span class="file-html">products.html</span>       — صفحة جميع المنتجات
+├── <span class="file-html">product-details.html</span>— صفحة تفاصيل منتج واحد
+├── <span class="file-html">cart.html</span>           — صفحة سلة المشتريات
+├── <span class="file-html">checkout.html</span>       — صفحة إتمام الطلب
+├── <span class="file-html">offers.html</span>         — صفحة العروض والخصومات
+├── <span class="file-html">about.html</span>          — صفحة "من نحن"
+├── <span class="file-html">contact.html</span>        — صفحة "تواصل معنا"
+├── <span class="file-html">faq.html</span>            — صفحة الأسئلة الشائعة
+│
+├── <span class="dir">css/</span>
+│   └── <span class="file-css">style.css</span>        — ملف التنسيق الوحيد (987 سطر)
+│
+├── <span class="dir">js/</span>
+│   ├── <span class="file-js">data.js</span>           — قاعدة بيانات المنتجات (88 سطر)
+│   └── <span class="file-js">main.js</span>           — المنطق الرئيسي (213 سطر)
+│
+└── <span class="dir">assets/</span>
+    └── <span class="dir">images/</span>
+        ├── <span class="file-img">hero.jpg</span>      — صورة Hero الرئيسية
+        ├── <span class="file-img">cola.jpg</span>      — صورة كولا
+        ├── <span class="file-img">orange.jpg</span>    — صورة برتقال
+        └── <span class="file-img">lemon.jpg</span>     — صورة ليمون</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 3: SITE MAP -->
+<!-- ========================== -->
+<section class="doc-section" id="sitemap">
+  <div class="section-header"><div class="section-num">3</div><div class="section-title-text">خريطة <span>الموقع</span></div></div>
+  <table class="doc-table">
+    <tr><th>الملف</th><th>العنوان</th><th>الوظيفة</th><th>JS المستخدم</th><th>كيف يصل إليه المستخدم</th></tr>
+    <tr><td><code>index.html</code></td><td>الرئيسية</td><td>عرض Hero، التصنيفات، المنتجات المميزة، آراء العملاء</td><td>data.js + main.js</td><td>فتح الموقع مباشرة</td></tr>
+    <tr><td><code>products.html</code></td><td>منتجاتنا</td><td>عرض كل المنتجات مع Sidebar للفلترة</td><td>data.js + main.js + inline JS</td><td>رابط Nav أو أزرار التصنيف</td></tr>
+    <tr><td><code>product-details.html</code></td><td>تفاصيل منتج</td><td>عرض تفاصيل منتج واحد ديناميكياً حسب ?id في URL</td><td>data.js + main.js + inline JS</td><td>الضغط على صورة أو اسم المنتج</td></tr>
+    <tr><td><code>cart.html</code></td><td>سلة المشتريات</td><td>عرض محتوى السلة + حساب المجموع + 15% ضريبة</td><td>data.js + main.js + inline JS</td><td>رابط "عرض السلة"</td></tr>
+    <tr><td><code>checkout.html</code></td><td>إتمام الطلب</td><td>نموذج بيانات العميل + طريقة الاستلام + طريقة الدفع</td><td>data.js + main.js + inline JS</td><td>رابط "إتمام الطلب"</td></tr>
+    <tr><td><code>offers.html</code></td><td>العروض</td><td>عرض المنتجات التي discount &gt; 0 فقط</td><td>data.js + main.js</td><td>رابط "العروض" في Nav</td></tr>
+    <tr><td><code>about.html</code></td><td>من نحن</td><td>قصة المتجر + الرؤية والمهمة والقيم</td><td>data.js + main.js</td><td>رابط "من نحن" في Nav</td></tr>
+    <tr><td><code>contact.html</code></td><td>تواصل معنا</td><td>معلومات التواصل + نموذج رسالة</td><td>data.js + main.js + inline JS</td><td>رابط "تواصل معنا" في Nav</td></tr>
+    <tr><td><code>faq.html</code></td><td>الأسئلة الشائعة</td><td>Accordion تفاعلي بأهم الأسئلة</td><td>data.js + main.js + inline JS</td><td>رابط "الأسئلة الشائعة" في Nav</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 4: data.js -->
+<!-- ========================== -->
+<section class="doc-section" id="js-data">
+  <div class="section-header"><div class="section-num">4</div><div class="section-title-text">ملف <span>data.js</span></div></div>
+  <p class="doc-p">هذا الملف هو <strong>قاعدة بيانات المشروع</strong> (Data Layer). لا يحتوي على دوال بل يحتوي على متغيرين عامين (Global Variables): <code>products</code> و<code>categories</code>. يُحمَّل قبل main.js في كل صفحة حتى يكون متاحاً لجميع الكود.</p>
+  <div class="code-label">js/data.js — الكود الكامل</div>
+  <div class="code-block">const products = [
+    {
+        id: 1,
+        name: "كوكاكولا كلاسيك",
+        description: "مشروب غازي منعش بالطعم الأصلي الرائع.",
+        category: "cola",
+        price: 7.00,
+        oldPrice: null,
+        discount: 0,
+        rating: 4.8,
+        reviewsCount: 120,
+        image: "assets/images/cola.jpg",
+        isNew: false
+    },
+    {
+        id: 2,
+        name: "فانتا برتقال",
+        description: "مشروب غازي بنكهة البرتقال الطبيعية.",
+        category: "orange",
+        price: 4.00,
+        oldPrice: 5.00,
+        discount: 20,
+        rating: 4.5,
+        reviewsCount: 85,
+        image: "assets/images/orange.jpg",
+        isNew: false
+    },
+    {
+        id: 3,
+        name: "سبرايت ليمون",
+        description: "انتعاش الليمون الحامض في كل رشفة.",
+        category: "lemon",
+        price: 5.00,
+        oldPrice: null,
+        discount: 0,
+        rating: 4.7,
+        reviewsCount: 92,
+        image: "assets/images/lemon.jpg",
+        isNew: true
+    },
+    {
+        id: 4,
+        name: "كولا زيرو",
+        description: "نفس الطعم الرائع بدون سكر.",
+        category: "cola",
+        price: 7.50,
+        oldPrice: 8.50,
+        discount: 12,
+        rating: 4.9,
+        reviewsCount: 150,
+        image: "assets/images/cola.jpg",
+        isNew: false
+    },
+    {
+        id: 5,
+        name: "ميراندا حمضيات",
+        description: "تشكيلة من الحمضيات المنعشة.",
+        category: "orange",
+        price: 4.50,
+        oldPrice: 6.00,
+        discount: 25,
+        rating: 4.4,
+        reviewsCount: 60,
+        image: "assets/images/orange.jpg",
+        isNew: false
+    },
+    {
+        id: 6,
+        name: "سفن أب",
+        description: "مشروب شفاف بنكهة الليمون المنعش.",
+        category: "lemon",
+        price: 5.00,
+        oldPrice: null,
+        discount: 0,
+        rating: 4.6,
+        reviewsCount: 110,
+        image: "assets/images/lemon.jpg",
+        isNew: false
+    }
+];
+
+const categories = [
+    { id: "all", name: "الكل", icon: "fa-solid fa-bottle-droplet" },
+    { id: "cola", name: "كولا", icon: "fa-solid fa-glass-water" },
+    { id: "orange", name: "برتقال", icon: "fa-solid fa-lemon" },
+    { id: "lemon", name: "ليمون", icon: "fa-solid fa-leaf" }
+];</div>
+  <div class="doc-h2">شرح بنية كائن المنتج (Product Object)</div>
+  <table class="doc-table">
+    <tr><th>الخاصية</th><th>النوع</th><th>الوظيفة</th><th>مثال</th></tr>
+    <tr><td><code>id</code></td><td>Number</td><td>معرّف فريد لكل منتج — يُستخدم في URL وفي السلة</td><td>1, 2, 3...</td></tr>
+    <tr><td><code>name</code></td><td>String</td><td>اسم المنتج المعروض في البطاقة والتفاصيل</td><td>"كوكاكولا كلاسيك"</td></tr>
+    <tr><td><code>description</code></td><td>String</td><td>وصف المنتج في صفحة التفاصيل</td><td>"مشروب غازي منعش..."</td></tr>
+    <tr><td><code>category</code></td><td>String</td><td>التصنيف — يُستخدم في عملية الفلترة</td><td>"cola", "orange", "lemon"</td></tr>
+    <tr><td><code>price</code></td><td>Number</td><td>السعر الحالي بعد الخصم</td><td>7.00</td></tr>
+    <tr><td><code>oldPrice</code></td><td>Number | null</td><td>السعر القديم قبل الخصم — null إذا لا يوجد خصم</td><td>8.50 أو null</td></tr>
+    <tr><td><code>discount</code></td><td>Number</td><td>نسبة الخصم — 0 إذا لا يوجد خصم</td><td>20, 25, 0</td></tr>
+    <tr><td><code>rating</code></td><td>Number</td><td>التقييم من 5 نجوم</td><td>4.8</td></tr>
+    <tr><td><code>reviewsCount</code></td><td>Number</td><td>عدد التقييمات</td><td>120</td></tr>
+    <tr><td><code>image</code></td><td>String</td><td>مسار الصورة النسبي</td><td>"assets/images/cola.jpg"</td></tr>
+    <tr><td><code>isNew</code></td><td>Boolean</td><td>هل المنتج جديد؟</td><td>true, false</td></tr>
+  </table>
+</section>
+<!-- ========================== -->
+<!-- SECTION 5: main.js -->
+<!-- ========================== -->
+<section class="doc-section" id="js-main">
+  <div class="section-header"><div class="section-num">5</div><div class="section-title-text">ملف <span>main.js</span> — الكود الكامل</div></div>
+  <p class="doc-p">هذا الملف هو <strong>قلب المشروع</strong>. يحتوي على جميع الدوال المسؤولة عن: تشغيل السلة، رسم بطاقات المنتجات، التحكم في الهيدر، وحفظ البيانات في localStorage.</p>
+  <div class="code-label">js/main.js — الكود الكامل (213 سطر)</div>
+  <div class="code-block">// DOM Elements
+const header = document.querySelector('.header');
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const cartBtn = document.querySelector('.cart-btn');
+const closeCartBtn = document.querySelector('.close-cart');
+const cartOverlay = document.querySelector('.cart-overlay');
+const sideCart = document.querySelector('.side-cart');
+const cartCountElements = document.querySelectorAll('.cart-count');
+const cartItemsContainer = document.querySelector('.cart-items');
+const cartTotalElement = document.querySelector('.cart-total-amount');
+
+// State
+let cart = JSON.parse(localStorage.getItem('veez_cart')) || [];
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    renderCart();
+
+    // Event Listeners
+    window.addEventListener('scroll', handleScroll);
+    if(menuToggle) menuToggle.addEventListener('click', toggleMenu);
+    if(cartBtn) cartBtn.addEventListener('click', toggleCart);
+    if(closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
+    if(cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+    
+    // Render Products if container exists
+    const featuredContainer = document.getElementById('featured-products');
+    if(featuredContainer) {
+        renderProducts(products.slice(0, 4), featuredContainer);
+    }
+    
+    // All Products or Search page
+    const allProductsContainer = document.getElementById('all-products');
+    if(allProductsContainer) {
+        renderProducts(products, allProductsContainer);
+    }
+
+    // Offers page
+    const offersContainer = document.getElementById('offers-products');
+    if(offersContainer) {
+        const discounted = products.filter(p => p.discount > 0);
+        renderProducts(discounted, offersContainer);
+    }
+});
+
+// Scroll Effect
+function handleScroll() {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+}
+
+// Menu Toggle
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+}
+
+// Cart Toggle
+function toggleCart(e) {
+    if(e) e.preventDefault();
+    cartOverlay.classList.toggle('active');
+    sideCart.classList.toggle('active');
+}
+
+// Products Rendering
+function createProductCard(product) {
+    const isDiscounted = product.discount > 0;
+    
+    let priceHtml = `&lt;div class="current-price"&gt;$${product.price.toFixed(2)}&lt;/div&gt;`;
+    if(isDiscounted) {
+        priceHtml = `
+            &lt;div class="current-price"&gt;$${product.price.toFixed(2)}&lt;/div&gt;
+            &lt;div class="old-price"&gt;$${product.oldPrice.toFixed(2)}&lt;/div&gt;
+        `;
+    }
+
+    const badgeHtml = isDiscounted ? `&lt;div class="discount-badge"&gt;خصم ${product.discount}%&lt;/div&gt;` : '';
+
+    return `
+        &lt;div class="product-card"&gt;
+            ${badgeHtml}
+            &lt;div class="product-image-wrap"&gt;
+                &lt;a href="product-details.html?id=${product.id}"&gt;
+                    &lt;img src="${product.image}" alt="${product.name}" class="product-image"&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="product-rating"&gt;
+                &lt;i class="fa-solid fa-star"&gt;&lt;/i&gt;
+                &lt;span&gt;${product.rating}&lt;/span&gt;
+                &lt;span class="count"&gt;(${product.reviewsCount})&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;h3 class="product-title"&gt;
+                &lt;a href="product-details.html?id=${product.id}"&gt;${product.name}&lt;/a&gt;
+            &lt;/h3&gt;
+            &lt;div class="product-price-row"&gt;${priceHtml}&lt;/div&gt;
+            &lt;div class="product-actions"&gt;
+                &lt;button class="btn btn-primary w-100" onclick="addToCart(${product.id})"&gt;
+                    &lt;i class="fa-solid fa-cart-plus"&gt;&lt;/i&gt; أضف للسلة
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    `;
+}
+
+function renderProducts(productsList, container) {
+    if(!container) return;
+    container.innerHTML = productsList.map(p => createProductCard(p)).join('');
+}
+
+// Cart Logic
+function addToCart(productId, quantity = 1) {
+    const product = products.find(p => p.id === productId);
+    if(!product) return;
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({ ...product, quantity });
+    }
+
+    saveCart();
+    updateCartCount();
+    renderCart();
+    
+    if(!sideCart.classList.contains('active')) {
+        toggleCart();
+    }
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    updateCartCount();
+    renderCart();
+}
+
+function updateQuantity(productId, delta) {
+    const item = cart.find(item => item.id === productId);
+    if(item) {
+        item.quantity += delta;
+        if(item.quantity <= 0) {
+            removeFromCart(productId);
+        } else {
+            saveCart();
+            updateCartCount();
+            renderCart();
+        }
+    }
+}
+
+function saveCart() {
+    localStorage.setItem('veez_cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCountElements.forEach(el => el.textContent = totalCount);
+}
+
+function getCartTotal() {
+    return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+}
+
+function renderCart() {
+    if(!cartItemsContainer) return;
+    
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+            &lt;div class="empty-state"&gt;
+                &lt;i class="fa-solid fa-basket-shopping"&gt;&lt;/i&gt;
+                &lt;h3&gt;السلة فارغة&lt;/h3&gt;
+                &lt;p&gt;لم تقم بإضافة أي منتجات بعد.&lt;/p&gt;
+            &lt;/div&gt;
+        `;
+        if(cartTotalElement) cartTotalElement.textContent = '$0.00';
+        return;
+    }
+
+    cartItemsContainer.innerHTML = cart.map(item => `
+        &lt;div class="cart-item"&gt;
+            &lt;div class="cart-item-img"&gt;
+                &lt;img src="${item.image}" alt="${item.name}"&gt;
+            &lt;/div&gt;
+            &lt;div class="cart-item-info"&gt;
+                &lt;div class="cart-item-title"&gt;${item.name}&lt;/div&gt;
+                &lt;div class="cart-item-price"&gt;$${(item.price * item.quantity).toFixed(2)}&lt;/div&gt;
+                &lt;div class="quantity-control"&gt;
+                    &lt;button class="qty-btn" onclick="updateQuantity(${item.id}, 1)"&gt;+&lt;/button&gt;
+                    &lt;span&gt;${item.quantity}&lt;/span&gt;
+                    &lt;button class="qty-btn" onclick="updateQuantity(${item.id}, -1)"&gt;-&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;button class="cart-item-remove" onclick="removeFromCart(${item.id})"&gt;حذف المنتج&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    `).join('');
+
+    if(cartTotalElement) cartTotalElement.textContent = '$' + getCartTotal().toFixed(2);
+}
+
+// Utility: get URL Params
+function getUrlParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 6: FUNCTIONS TABLE -->
+<!-- ========================== -->
+<section class="doc-section" id="js-functions">
+  <div class="section-header"><div class="section-num">6</div><div class="section-title-text">جدول <span>الدوال (Functions)</span></div></div>
+  <table class="doc-table">
+    <tr><th>اسم الدالة</th><th>الوظيفة</th><th>المعاملات</th><th>القيمة المرجعة</th><th>أين تُستدعى؟</th></tr>
+    <tr><td><code>handleScroll()</code></td><td>تضيف/تزيل class="scrolled" من الهيدر</td><td>لا يوجد</td><td>لا يوجد</td><td>window scroll</td></tr>
+    <tr><td><code>toggleMenu()</code></td><td>تبديل إظهار قائمة Nav في الهاتف</td><td>لا يوجد</td><td>لا يوجد</td><td>menuToggle click</td></tr>
+    <tr><td><code>toggleCart(e)</code></td><td>فتح/إغلاق السلة الجانبية</td><td>e (Event)</td><td>لا يوجد</td><td>أزرار السلة</td></tr>
+    <tr><td><code>createProductCard(product)</code></td><td>تنشئ HTML لبطاقة المنتج</td><td>product</td><td>String HTML</td><td>renderProducts()</td></tr>
+    <tr><td><code>renderProducts(...)</code></td><td>ترسم المنتجات داخل حاوية</td><td>productsList, container</td><td>لا يوجد</td><td>DOMContentLoaded</td></tr>
+    <tr><td><code>addToCart(id, qty)</code></td><td>تضيف منتجاً للسلة أو تزيد كميته</td><td>productId, quantity</td><td>لا يوجد</td><td>أزرار الإضافة</td></tr>
+    <tr><td><code>removeFromCart(id)</code></td><td>تحذف منتجاً نهائياً من السلة</td><td>productId</td><td>لا يوجد</td><td>زر الحذف</td></tr>
+    <tr><td><code>updateQuantity(id, delta)</code></td><td>تزيد أو تنقص الكمية</td><td>productId, delta</td><td>لا يوجد</td><td>أزرار +/-</td></tr>
+    <tr><td><code>saveCart()</code></td><td>تحفظ السلة في localStorage</td><td>لا يوجد</td><td>لا يوجد</td><td>بعد كل تعديل</td></tr>
+    <tr><td><code>updateCartCount()</code></td><td>تحدّث العداد أعلى السلة</td><td>لا يوجد</td><td>لا يوجد</td><td>بعد كل تعديل</td></tr>
+    <tr><td><code>getCartTotal()</code></td><td>تحسب المجموع الكلي للسلة</td><td>لا يوجد</td><td>Number</td><td>renderCart()</td></tr>
+    <tr><td><code>renderCart()</code></td><td>ترسم محتوى السلة الجانبية</td><td>لا يوجد</td><td>لا يوجد</td><td>DOMContentLoaded و بعد التعديل</td></tr>
+    <tr><td><code>getUrlParam(param)</code></td><td>تستخرج قيمة من URL</td><td>param</td><td>String | null</td><td>product-details.html</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 7: LOCALSTORAGE -->
+<!-- ========================== -->
+<section class="doc-section" id="localstorage">
+  <div class="section-header"><div class="section-num">7</div><div class="section-title-text">نظام <span>LocalStorage</span></div></div>
+  <div class="alert alert-success"><strong>المفتاح المستخدم:</strong> <code>'veez_cart'</code> — يخزن مصفوفة JSON لعناصر السلة.</div>
+  
+  <div class="doc-h2">دورة حياة البيانات</div>
+  <div class="flow-steps">
+    <div class="flow-step"><div class="flow-num">1</div><div><strong>تهيئة:</strong> <code>let cart = JSON.parse(localStorage.getItem('veez_cart')) || [];</code></div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">2</div><div><strong>إضافة منتج:</strong> يُضاف كائن المنتج للذاكرة</div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">3</div><div><strong>حفظ:</strong> <code>localStorage.setItem('veez_cart', JSON.stringify(cart));</code></div></div><div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-num">4</div><div><strong>حذف السلة:</strong> عند تأكيد الطلب بـ <code>removeItem</code></div></div>
+  </div>
+
+  <div class="doc-h2">شكل البيانات المخزنة</div>
+  <div class="code-block">[
+  {
+    "id": 1,
+    "name": "كوكاكولا كلاسيك",
+    "price": 7.00,
+    "image": "assets/images/cola.jpg",
+    "quantity": 2
+  }
+]</div>
+</section>
+<!-- ========================== -->
+<!-- SECTION 8: CART SYSTEM -->
+<!-- ========================== -->
+<section class="doc-section" id="cart-system">
+  <div class="section-header"><div class="section-num">8</div><div class="section-title-text">نظام <span>السلة (Shopping Cart)</span></div></div>
+  <div class="doc-h2">إضافة منتج — addToCart()</div>
+  <div class="code-block">function addToCart(productId, quantity = 1) {
+    const product = products.find(p => p.id === productId);
+    if(!product) return; 
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({ ...product, quantity });
+    }
+
+    saveCart();       
+    updateCartCount();
+    renderCart();     
+}</div>
+  <div class="doc-h2">حساب الإجمالي والضريبة</div>
+  <div class="code-block">const subtotal = getCartTotal();
+const tax = subtotal * 0.15;
+const total = subtotal + tax;</div>
+  <div class="doc-h2">حذف منتج وتعديل كمية</div>
+  <div class="code-block">function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    // ...
+}</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 9: FILTER SYSTEM -->
+<!-- ========================== -->
+<section class="doc-section" id="filter-system">
+  <div class="section-header"><div class="section-num">9</div><div class="section-title-text">نظام <span>الفلاتر والتصنيفات</span></div></div>
+  <p class="doc-p">الفلترة موجودة في <strong>products.html</strong> تعتمد على استخراج قيمة Radio. عند تغيير أي Radio تُستدعى <code>applyFilters()</code>.</p>
+  <div class="code-block">function applyFilters() {
+    const selectedCat = document.querySelector('input[name="category"]:checked').value;
+    const selectedPrice = document.querySelector('input[name="price"]:checked').value;
+    let filtered = products; 
+    
+    if(selectedCat !== 'all') filtered = filtered.filter(p => p.category === selectedCat);
+    
+    if(selectedPrice === 'under5') filtered = filtered.filter(p => p.price &lt; 5);
+    else if(selectedPrice === '5to10') filtered = filtered.filter(p => p.price >= 5 && p.price &lt;= 10);
+    
+    renderProducts(filtered, allProductsContainer);
+}</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 10: CHECKOUT -->
+<!-- ========================== -->
+<section class="doc-section" id="checkout-system">
+  <div class="section-header"><div class="section-num">10</div><div class="section-title-text">نظام <span>إتمام الطلب (Checkout)</span></div></div>
+  <div class="alert alert-warning">المشروع <strong>لا يحتوي على Backend</strong>. عند تأكيد الطلب يظهر التنبيه ثم تفرغ السلة.</div>
+  <div class="code-block">document.getElementById('checkout-form').addEventListener('submit', (e) => {
+    e.preventDefault(); 
+    alert('تم استلام طلبك بنجاح!');
+    localStorage.removeItem('veez_cart'); 
+    window.location.href = 'index.html'; 
+});</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 11: CSS OVERVIEW -->
+<!-- ========================== -->
+<section class="doc-section" id="css-overview">
+  <div class="section-header"><div class="section-num">11</div><div class="section-title-text">توثيق <span>CSS (style.css)</span></div></div>
+  <p class="doc-p">ملف <strong>style.css</strong> يحتوي على <strong>987 سطراً</strong> وهو الملف الوحيد للتنسيق.</p>
+  <div class="doc-h2">المتغيرات (:root Variables)</div>
+  <div class="code-block">:root {
+    --primary: #111315;
+    --brand-yellow: #FFD21A;
+    --transition: all 0.3s ease;
+    /* توحيد الألوان والمقاسات */
+}</div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 12: CSS SELECTORS -->
+<!-- ========================== -->
+<section class="doc-section" id="css-selectors">
+  <div class="section-header"><div class="section-num">12</div><div class="section-title-text">أنواع <span>CSS Selectors</span></div></div>
+  <table class="doc-table">
+    <tr><th>المحدد</th><th>مثال</th><th>الوظيفة</th></tr>
+    <tr><td>Class</td><td><code>.header, .btn-primary</code></td><td>أكثر محددات استخداماً</td></tr>
+    <tr><td>Hover</td><td><code>.btn:hover</code></td><td>تأثير المرور</td></tr>
+    <tr><td>Media</td><td><code>@media (max-width: 768px)</code></td><td>الشاشات المختلفة</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 13: CSS PROPERTIES -->
+<!-- ========================== -->
+<section class="doc-section" id="css-properties">
+  <div class="section-header"><div class="section-num">13</div><div class="section-title-text">أهم <span>CSS Properties</span></div></div>
+  <table class="doc-table">
+    <tr><th>الخاصية</th><th>المعنى</th><th>مثال من المشروع</th><th>لماذا استُخدمت؟</th></tr>
+    <tr><td><code>display: flex</code></td><td>تخطيط مرن</td><td>header-container</td><td>لمحاذاة العناصر أفقياً</td></tr>
+    <tr><td><code>display: grid</code></td><td>تخطيط شبكي</td><td>product-grid</td><td>لعرض بطاقات منتجات</td></tr>
+    <tr><td><code>position: sticky</code></td><td>ثابت عند التمرير</td><td>.header</td><td>يبقى الهيدر أعلى الصفحة</td></tr>
+    <tr><td><code>clip-path</code></td><td>قطع العنصر</td><td>.nav-links (Mobile)</td><td>تأثير فتح القائمة في الهاتف</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 14: RESPONSIVE -->
+<!-- ========================== -->
+<section class="doc-section" id="css-responsive">
+  <div class="section-header"><div class="section-num">14</div><div class="section-title-text">التصميم <span>المتجاوب</span></div></div>
+  <div class="card-grid">
+    <div class="info-card"><div class="info-card-title"><div class="icon">📱</div>موبايل — 768px</div><p>ظهور أيقونة الهامبرغر، القائمة تنسدل بـ clip-path.</p></div>
+    <div class="info-card"><div class="info-card-title"><div class="icon">💻</div>تابلت — 991px</div><p>Hero يتحول لعمود واحد، Sidebar المنتجات يصبح فوق المنتجات.</p></div>
+  </div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 15: HTML TAGS -->
+<!-- ========================== -->
+<section class="doc-section" id="html-tags">
+  <div class="section-header"><div class="section-num">15</div><div class="section-title-text">جدول <span>HTML Tags</span></div></div>
+  <table class="doc-table">
+    <tr><th>Tag</th><th>الوظيفة في المشروع</th></tr>
+    <tr><td><code>&lt;nav&gt;</code></td><td>قائمة الروابط العلوية</td></tr>
+    <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar الفلاتر في products.html</td></tr>
+    <tr><td><code>&lt;input type="radio"&gt;</code></td><td>اختيار الفلتر أو طريقة التوصيل</td></tr>
+    <tr><td><code>&lt;script src="..."&gt;</code></td><td>ربط data.js و main.js</td></tr>
+  </table>
+</section>
+<!-- ========================== -->
+<!-- SECTION 16: EVENTS -->
+<!-- ========================== -->
+<section class="doc-section" id="js-events">
+  <div class="section-header"><div class="section-num">16</div><div class="section-title-text">الأحداث <span>(Events)</span></div></div>
+  <table class="doc-table">
+    <tr><th>الحدث (Event)</th><th>العنصر</th><th>ما يحدث</th><th>الدالة المستدعاة</th></tr>
+    <tr><td><code>DOMContentLoaded</code></td><td>document</td><td>عند اكتمال تحميل HTML</td><td>initialization block</td></tr>
+    <tr><td><code>scroll</code></td><td>window</td><td>عند تمرير الصفحة</td><td>handleScroll()</td></tr>
+    <tr><td><code>click</code></td><td>زر السلة</td><td>فتح السلة</td><td>toggleCart()</td></tr>
+    <tr><td><code>change</code></td><td>Radio</td><td>تغيير الفلتر</td><td>applyFilters()</td></tr>
+    <tr><td><code>submit</code></td><td>checkout-form</td><td>إرسال الطلب</td><td>alert + reset</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 17: DOM -->
+<!-- ========================== -->
+<section class="doc-section" id="js-dom">
+  <div class="section-header"><div class="section-num">17</div><div class="section-title-text">التعامل مع <span>DOM</span></div></div>
+  <table class="doc-table">
+    <tr><th>الأمر</th><th>الوظيفة</th><th>مثال من المشروع</th></tr>
+    <tr><td><code>querySelector()</code></td><td>عنصر واحد يطابق المحدد</td><td><code>document.querySelector('.header')</code></td></tr>
+    <tr><td><code>getElementById()</code></td><td>عنصر بالـ ID</td><td><code>document.getElementById('all-products')</code></td></tr>
+    <tr><td><code>innerHTML</code></td><td>إضافة كود HTML</td><td><code>container.innerHTML = ...</code></td></tr>
+    <tr><td><code>classList.toggle()</code></td><td>تبديل Class</td><td><code>sideCart.classList.toggle('active')</code></td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 18: RELATIONSHIP -->
+<!-- ========================== -->
+<section class="doc-section" id="relationship">
+  <div class="section-header"><div class="section-num">18</div><div class="section-title-text">العلاقة بين <span>HTML + CSS + JS</span></div></div>
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="info-card-title">HTML</div><p>يوفر الهيكل: حاويات فارغة جاهزة لاستقبال البيانات.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">CSS</div><p>التصميم: الألوان، الأبعاد، الأنيميشن والانتقالات.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">JavaScript</div><p>المنطق: يقرأ البيانات من data.js، ويولد HTML ويحقنه في الصفحة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 19: IMPORTANT CODE -->
+<!-- ========================== -->
+<section class="doc-section" id="important-code">
+  <div class="section-header"><div class="section-num">19</div><div class="section-title-text">أهم الأكواد <span>للمناقشة</span></div></div>
+  <div class="doc-h2">Spread Operator (...)</div>
+  <div class="line-explain">
+    <span class="line-code">cart.push({ ...product, quantity });</span>
+    <span class="line-desc">ينسخ جميع خصائص المنتج (id, price, name) إلى كائن جديد ويضيف خاصية quantity.</span>
+  </div>
+  <div class="doc-h2">reduce()</div>
+  <div class="line-explain">
+    <span class="line-code">cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);</span>
+    <span class="line-desc">تقوم بجمع قيمة (السعر × الكمية) لكل عنصر في السلة للوصول إلى الإجمالي.</span>
+  </div>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 20: Q&A -->
+<!-- ========================== -->
+<section class="doc-section" id="qa">
+  <div class="section-header"><div class="section-num">20</div><div class="section-title-text">أسئلة <span>المناقشة</span></div></div>
+  
+  <div class="qa-item">
+    <div class="qa-question">س: لماذا localStorage وليس قاعدة بيانات؟</div>
+    <div class="qa-answer">ج: لأن المشروع Client-Side فقط بدون خادم. يُستخدم localStorage لتجربة النظام فقط وحفظ السلة على المتصفح.</div>
+  </div>
+  
+  <div class="qa-item">
+    <div class="qa-question">س: ما الفرق بين display: flex و grid؟</div>
+    <div class="qa-answer">ج: flex خطي (اتجاه واحد)، استخدمته للهيدر. grid شبكي (بعدين)، استخدمته لقائمة المنتجات لترتيب الكروت بمرونة.</div>
+  </div>
+  
+  <div class="qa-item">
+    <div class="qa-question">س: ماذا يحدث عند تأكيد الطلب؟</div>
+    <div class="qa-answer">ج: يتوقف الإرسال الافتراضي، يظهر رسالة نجاح، تُمسح بيانات 'veez_cart' من localStorage، ويتم تحويل المستخدم للرئيسية.</div>
+  </div>
+</section>
+<!-- ========================== -->
+<!-- SECTION 21: NOTES -->
+<!-- ========================== -->
+<section class="doc-section" id="notes">
+  <div class="section-header"><div class="section-num">21</div><div class="section-title-text">ملاحظات <span>تقنية</span></div></div>
+  <table class="doc-table">
+    <tr><th>الملاحظة</th><th>التأثير</th><th>التحسين المقترح</th></tr>
+    <tr><td>خاصية <code>isNew</code> غير مستخدمة UI</td><td>منخفض</td><td>إضافة شارة "جديد" للمنتجات المعنية.</td></tr>
+    <tr><td>لا يوجد نظام بحث حقيقي</td><td>متوسط</td><td>تفعيل حقل البحث لمطابقة اسم المنتج.</td></tr>
+    <tr><td>تكرار أكواد الهيدر والفوتر</td><td>صيانة صعبة</td><td>حقن الهيدر بالـ JavaScript أو الاعتماد على إطار عمل.</td></tr>
+  </table>
+</section>
+
+<!-- ========================== -->
+<!-- SECTION 22: STATS -->
+<!-- ========================== -->
+<section class="doc-section" id="stats">
+  <div class="section-header"><div class="section-num">22</div><div class="section-title-text">إحصائيات <span>المشروع</span></div></div>
+  <div class="card-grid">
+    <div class="info-card" style="text-align:center;"><div style="font-size:2.5rem;font-weight:900;color:var(--primary);">9</div><div>ملفات HTML</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2.5rem;font-weight:900;color:var(--primary);">987</div><div>سطر CSS</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2.5rem;font-weight:900;color:var(--primary);">213</div><div>سطر JavaScript</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2.5rem;font-weight:900;color:var(--primary);">4</div><div>صور منتجات</div></div>
+  </div>
+
+  <div style="text-align:center;margin-top:60px;padding-top:32px;border-top:2px solid var(--border);">
+    <div style="font-size:1.5rem;font-weight:900;color:var(--primary);">مشروع متجر فيز للمشروبات</div>
+    <div style="color:var(--text-secondary);margin-top:8px;">توثيق أكاديمي شامل | VEEZ Drinks Store — Full Documentation</div>
+    <div style="margin-top:16px;">
+      <span class="badge badge-yellow">HTML</span>
+      <span class="badge badge-dark" style="margin:0 8px;">CSS</span>
+      <span class="badge badge-blue">JavaScript</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- end main-content -->
+</div><!-- end page-wrapper -->
+</body>
+</html>

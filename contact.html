@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | فيز للمشروبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html" class="active">تواصل معنا</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn cart-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></button>
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">تواصل معنا</h1>
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <span>/</span> تواصل معنا
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section-padding">
+        <div class="container checkout-grid" style="grid-template-columns: 1fr 1.5fr;">
+            <!-- Contact Info -->
+            <div class="checkout-box" style="height: max-content;">
+                <h3 style="margin-bottom: 24px; color: var(--primary);">معلومات التواصل</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 32px;">نسعد دائماً بتواصلك معنا، فريق الدعم الفني جاهز للرد على جميع استفساراتك.</p>
+                
+                <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                    <div style="width: 48px; height: 48px; background-color: var(--off-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 4px;">العنوان</h4>
+                        <p style="color: var(--text-secondary);">الحديدة، اليمن</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                    <div style="width: 48px; height: 48px; background-color: var(--off-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 4px;">رقم الهاتف / واتساب</h4>
+                        <p style="color: var(--text-secondary); direction: ltr; text-align: right;">+967 770 000 000</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 16px;">
+                    <div style="width: 48px; height: 48px; background-color: var(--off-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 4px;">البريد الإلكتروني</h4>
+                        <p style="color: var(--text-secondary);">info@veezdrinks.ye</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="checkout-box">
+                <h3 style="margin-bottom: 24px; color: var(--primary);">أرسل رسالة</h3>
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" class="form-control" required placeholder="أدخل اسمك الكريم">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" class="form-control" required placeholder="رقم الهاتف للتواصل">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>عنوان الرسالة</label>
+                        <input type="text" class="form-control" required placeholder="موضوع الاستفسار">
+                    </div>
+                    <div class="form-group">
+                        <label>محتوى الرسالة</label>
+                        <textarea class="form-control" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 16px;">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('تم إرسال رسالتك بنجاح! سنتواصل معك في أقرب وقت.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

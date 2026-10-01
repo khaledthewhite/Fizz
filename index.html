@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فيز | انتعاشك يبدأ من هنا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                مشروبات <span>فيز</span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="products.html">منتجاتنا</a>
+                <a href="offers.html">العروض</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <button class="icon-btn cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="side-cart">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items">
+            <!-- Items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <a href="cart.html" class="btn btn-secondary">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-primary">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">انتعاشك<br><span>يبدأ من هنا</span></h1>
+                <p class="hero-subtitle">اكتشف عالم المشروبات المنعشة التي تختارها بنكهاتك المفضلة واستمتع بطعم لذيذ طازجة دائماً وباردة دائماً.</p>
+                <div class="hero-actions">
+                    <a href="products.html" class="btn btn-primary">تسوق الآن <i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="offers.html" class="btn btn-outline-white">اكتشف العروض</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="assets/images/hero.jpg" alt="Veez Beverages" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories section-padding">
+        <div class="container">
+            <h2 class="section-title">تسوق حسب الصنف</h2>
+            <div class="category-grid">
+                <a href="products.html?category=all" class="category-card">
+                    <i class="fa-solid fa-bottle-droplet category-icon"></i>
+                    <h3 class="category-name">جميع المشروبات</h3>
+                </a>
+                <a href="products.html?category=cola" class="category-card">
+                    <i class="fa-solid fa-glass-water category-icon"></i>
+                    <h3 class="category-name">كولا</h3>
+                </a>
+                <a href="products.html?category=orange" class="category-card">
+                    <i class="fa-solid fa-lemon category-icon"></i>
+                    <h3 class="category-name">برتقال</h3>
+                </a>
+                <a href="products.html?category=lemon" class="category-card">
+                    <i class="fa-solid fa-leaf category-icon"></i>
+                    <h3 class="category-name">ليمون</h3>
+                </a>
+                <a href="offers.html" class="category-card" style="border-color: var(--brand-yellow);">
+                    <i class="fa-solid fa-tags category-icon" style="color: var(--brand-yellow);"></i>
+                    <h3 class="category-name">عروض وباقات</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products section-padding">
+        <div class="container">
+            <h2 class="section-title">المنتجات المميزة</h2>
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be injected here via JS -->
+            </div>
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="products.html" class="btn btn-outline-white">عرض كل المنتجات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section style="background-color: var(--brand-yellow); padding: 48px 0; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 16px;">خصم 20% على طلبك الأول!</h2>
+            <p style="color: var(--primary); margin-bottom: 24px; font-weight: 600;">استخدم الكود VEEZ20 عند إتمام الدفع واستمتع بالانتعاش.</p>
+            <a href="products.html" class="btn btn-dark">اطلب الآن</a>
+        </div>
+    </section>
+
+    <!-- Why Veez -->
+    <section class="features section-padding">
+        <div class="container">
+            <h2 class="section-title">لماذا فيز؟</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fa-solid fa-truck-fast feature-icon"></i>
+                    <h3 class="feature-title">توصيل سريع</h3>
+                    <p class="feature-desc">مشروباتك تصلك باردة في أسرع وقت.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-shield-halved feature-icon"></i>
+                    <h3 class="feature-title">دفع آمن</h3>
+                    <p class="feature-desc">طرق دفع متعددة وآمنة بالكامل.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-tags feature-icon"></i>
+                    <h3 class="feature-title">أسعار مناسبة</h3>
+                    <p class="feature-desc">عروض وخصومات حصرية دائماً.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-medal feature-icon"></i>
+                    <h3 class="feature-title">منتجات أصلية</h3>
+                    <p class="feature-desc">جودة مضمونة ومنتجات أصلية 100%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"المشروبات طازجة جداً والتوصيل كان سريعاً. أحب حقاً مشروبات فيز!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: var(--brand-yellow); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">سع</div>
+                        <div class="author-info">
+                            <h4>سارة علي</h4>
+                            <span>الحديدة، اليمن</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"تنوع رائع وأسعار ممتازة. أفضل مكان لشراء المشروبات الغازية عبر الإنترنت."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">مح</div>
+                        <div class="author-info">
+                            <h4>مريم حسن</h4>
+                            <span>صنعاء، اليمن</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"لقد طلبت فانتا وسبرايت وكان كلاهما بارد جداً. موصى به بشدة!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: var(--brand-yellow); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">نأ</div>
+                        <div class="author-info">
+                            <h4>نور أحمد</h4>
+                            <span>عدن، اليمن</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fa-solid fa-glass-water" style="color: var(--brand-yellow)"></i>
+                        مشروبات <span>فيز</span>
+                    </div>
+                    <p class="footer-desc">وجهتك الأولى للمشروبات المنعشة. تسوق الآن واستمتع بأفضل الأسعار والتوصيل السريع في اليمن.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="offers.html">العروض الخاصة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> الحديدة، اليمن</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-phone"></i> +967 770 000 000</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> info@veezdrinks.ye</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 فيز للمشروبات.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
